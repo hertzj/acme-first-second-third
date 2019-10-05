@@ -52,11 +52,44 @@ const moveLeft = (node) => {
     render()
 }
 
+const checkValidity = () => { // extra functionality
+    rightButtons.forEach(button => {
+        const parent = button.parentNode;
+        if (!parent.querySelectorAll('.selected').length) {
+            button.setAttribute('disabled', 'disabled')
+        }
+    
+        else {
+            button.removeAttribute('disabled');
+            button.style.backgroundColor = 'tomato';
+        }
+        if (button.hasAttribute('disabled')) {
+            button.style.backgroundColor = 'lightGray';
+        }
+    })
+    leftButtons.forEach(button => {
+        const parent = button.parentNode;
+        if (!parent.querySelectorAll('.selected').length) {
+            button.setAttribute('disabled', 'disabled')
+        }
+    
+        else {
+            button.removeAttribute('disabled');
+            button.style.backgroundColor = 'tomato';
+        }
+        if (button.hasAttribute('disabled')) {
+            button.style.backgroundColor = 'lightGray';
+        }
+    })
+}
+
+
 rightButtons.forEach(button => {
     button.addEventListener('click', ev => {
         const parent = button.parentNode;
         parent.querySelectorAll('.selected').forEach(selected => {
             moveRight(selected);
+            checkValidity(); // added this
         })
     })
 })
@@ -66,6 +99,7 @@ leftButtons.forEach(button => {
         const parent = button.parentNode;
         parent.querySelectorAll('.selected').forEach(selected => {
             moveLeft(selected);
+            checkValidity(); // added this
         })
     })
 })
@@ -91,6 +125,7 @@ const render = () => {
            else {
                user.selected = true;
            }
+           checkValidity() // added this
        })
        node.innerHTML = `${user.name}`;
        document.getElementById(`${user.slot}`).appendChild(node);
