@@ -1,0 +1,34 @@
+#lists {
+    display: flex;
+    flex-direction: row;
+}
+
+#first, #second, #third  {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px tomato;
+    height: 500px;
+    width: 500px;
+    margin: 30px;
+    padding: 2rem;
+}
+
+
+
+
+button {
+    background-color: tomato;
+    border-radius: 0;
+    height: 50px;
+    
+}
+
+.user {
+    font-size: 1.5rem;
+    margin-top: 1px;
+    padding: 10px;
+}
+
+.selected {
+    background-color: tomato;
+}
